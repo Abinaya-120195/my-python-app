@@ -3,7 +3,7 @@ pipeline {
     environment {
         DOCKER_IMAGE = "abinayapalraj12/my-python-app:${env.BUILD_NUMBER}"
         GITHUB_REPO = "Abinaya-120195/my-python-app"
-            DOCKER_CREDENTIALS = credentials('dockerhub-token') // Jenkins Docker Hub credentials
+            DOCKER_CREDENTIALS = credentials('dockerhub-credentials') // Jenkins Docker Hub credentials
         ARGOCD_SERVER = "https://localhost:8081"
         KUBE_CONTEXT = "docker-desktop" // Set your Kubernetes context
     }
@@ -29,7 +29,7 @@ pipeline {
                 script {
                     bat '''
                     echo "Logging in to Docker Hub..."
-                    echo "dckr_pat_yUeZuT4tZ-lX3O7iHKZ1FlcNn_c" | docker login --username abinayapalraj12 --password-stdin
+                    echo "Information@12" | docker login --username abinayapalraj12 --password-stdin
                     '''
                 }
             }
