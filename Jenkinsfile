@@ -46,17 +46,17 @@ pipeline {
                 }
             }
         }
-       // stage('Deploy with Argo CD') {
-           // steps {
-               // script {
+      stage('Deploy with Argo CD') {
+            steps {
+                script {
                     // Use kubectl command to sync with Argo CD
-               //     sh '''
-                      //  kubectl config use-context ${KUBE_CONTEXT}
-                       // argocd app sync my-python-app
-             //       '''
-               // }
- //}
-  //      }
+                   BAT '''
+                        kubectl config use-context ${KUBE_CONTEXT}
+                        argocd app sync my-python-app
+                    '''
+                }
+            }
+        }
     }
     post {
         //always {
