@@ -4,7 +4,7 @@ pipeline {
         DOCKER_IMAGE = "abinayapalraj12/my-python-app:${env.BUILD_NUMBER}"
         GITHUB_REPO = "Abinaya-120195/my-python-app"
         DOCKER_CREDENTIALS = credentials('dockerhub-credentials') // Jenkins Docker Hub credentials
-        //KUBECONFIG = "C:\Users\abina\.kube\config"
+        KUBECONFIG = 'C:\Users\abina\.kube\config'
         ARGOCD_SERVER = "https://localhost:8081"
         KUBE_CONTEXT = "docker-desktop" // Set your Kubernetes context
         
@@ -56,6 +56,7 @@ pipeline {
             echo "Switching to Kubernetes context: ${kubeContext}"
             // bat "kubectl config get-contexts"
              bat "kubectl config use-context ${KUBE_CONTEXT}"
+              bat kubectl get nodes
              //  bat "kubectl config use-context docker-desktop"
                 //bat "kubectl apply -f deployment.yaml"
             //bat "kubectl config use-context ${kubeContext}"
