@@ -38,7 +38,7 @@ pipeline {
             steps {
                 script {
                     // Log in to Docker
-                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_CREDENTIALS) {
+                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-credentials') {
                         // Build and push the Docker image
                         bat "docker build -t ${DOCKER_IMAGE} ."
                         bat "docker push ${DOCKER_IMAGE}"
