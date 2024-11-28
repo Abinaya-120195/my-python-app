@@ -29,7 +29,7 @@ pipeline {
                 script {
                     bat '''
                     echo "Logging in to Docker Hub..."
-                    echo $DOCKER_CREDENTIALS | docker login --username abinayapalraj12 --password-stdin
+                    echo "dckr_pat_yUeZuT4tZ-lX3O7iHKZ1FlcNn_c" | docker login --username abinayapalraj12 --password-stdin
                     '''
                 }
             }
