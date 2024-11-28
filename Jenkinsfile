@@ -5,7 +5,7 @@ pipeline {
         GITHUB_REPO = "Abinaya-120195/my-python-app"
         DOCKER_CREDENTIALS = credentials('dockerhub-credentials') // Jenkins Docker Hub credentials
         KUBECONFIG = 'C:/Users/abina/.kube/config'
-        ARGOCD_SERVER = "https://localhost:8081"
+        ARGOCD_SERVER = "localhost:8081"
         KUBE_CONTEXT = "docker-desktop" // Set your Kubernetes context
         
     }
