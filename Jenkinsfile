@@ -19,7 +19,17 @@ pipeline {
                 script {
                     bat '''
                     echo "Testing Docker Hub Token..."
-                    echo $DOCKER_CREDE
+                    echo $DOCKER_CREDENTIALS
+                    '''
+                }
+            }
+        }
+        stage('Docker Hub Login Test') {
+            steps {
+                script {
+                    sh '''
+                    echo "Logging in to Docker Hub..."
+                    echo $DOCKER_CREDENTIALS | docker login --username abinayapalraj12 --password-stdin
                     '''
                 }
             }
