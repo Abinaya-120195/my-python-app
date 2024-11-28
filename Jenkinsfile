@@ -17,7 +17,7 @@ pipeline {
         stage('Test Docker Hub Token') {
             steps {
                 script {
-                    sh '''
+                    bat '''
                     echo "Testing Docker Hub Token..."
                     echo $DOCKER_CREDE
                     '''
