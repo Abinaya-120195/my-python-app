@@ -50,10 +50,9 @@ pipeline {
             steps {
                 script {
                     // Use kubectl command to sync with Argo CD
-                   bat '''
-                        kubectl config use-context ${KUBE_CONTEXT}
-                        argocd app sync my-python-app
-                    '''
+                    bat "kubectl config use-context ${KUBE_CONTEXT}"
+                       bat "argocd app sync my-python-app"
+                   
                 }
             }
         }
