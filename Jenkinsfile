@@ -46,6 +46,16 @@ pipeline {
                 }
             }
         }
+        stage('Switch to Kubernetes Context') {
+    steps {
+        script {
+            // Switch to the specified Kubernetes context
+            def kubeContext = "${KUBE_CONTEXT}"
+            echo "Switching to Kubernetes context: ${kubeContext}"
+            bat "kubectl config use-context ${kubeContext}"
+        }
+    }
+}
       stage('Deploy with Argo CD') {
             steps {
                 script {
