@@ -6,6 +6,6 @@ spec:
   type: LoadBalancer  # or ClusterIP / NodePort, depending on your needs
   ports:
     - port: 80
-      targetPort: 8081
+      targetPort: 5000
   selector:
     app: my-python-app
