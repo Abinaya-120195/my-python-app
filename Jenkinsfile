@@ -27,7 +27,7 @@ pipeline {
         stage('Docker Hub Login Test') {
             steps {
                 script {
-                    sh '''
+                    bat '''
                     echo "Logging in to Docker Hub..."
                     echo $DOCKER_CREDENTIALS | docker login --username abinayapalraj12 --password-stdin
                     '''
