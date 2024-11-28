@@ -3,7 +3,7 @@ pipeline {
     environment {
         DOCKER_IMAGE = "abinayapalraj12/my-python-app:${env.BUILD_NUMBER}"
         GITHUB_REPO = "Abinaya-120195/my-python-app"
-        DOCKER_CREDENTIALS = credentials('dockerhub-credentials') // Jenkins Docker Hub credentials
+        DOCKER_CREDENTIALS = credentials('dockerhub-token') // Jenkins Docker Hub credentials
         ARGOCD_SERVER = "https://localhost:8081"
         KUBE_CONTEXT = "docker-desktop" // Set your Kubernetes context
     }
@@ -17,7 +17,7 @@ pipeline {
         stage('Test Credentials') {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', 
+                    withCredentials([usernamePassword(credentialsId: 'dockerhub-token', 
                                                      usernameVariable: 'DOCKER_USER', 
                                                      passwordVariable: 'DOCKER_PASS')]) {
                         sh '''
@@ -27,18 +27,18 @@ pipeline {
                 }
             }
         }
-        stage('Build Docker Image') {
-            steps {
-                script {
-                    // Log in to Docker
-                    docker.withRegistry('https://index.docker.io/v1/', 'DOCKER_CREDENTIALS') {
-                        // Build and push the Docker image
-                        sh "docker build -t ${DOCKER_IMAGE} ."
-                        sh "docker push ${DOCKER_IMAGE}"
-                    }
-                }
-            }
-        }
+        //stage('Build Docker Image') {
+        //    steps {
+        //        script {
+        //            // Log in to Docker
+        //            docker.withRegistry('https://index.docker.io/v1/', 'DOCKER_CREDENTIALS') {
+         //               // Build and push the Docker image
+         //               sh "docker build -t ${DOCKER_IMAGE} ."
+        //                sh "docker push ${DOCKER_IMAGE}"
+         //           }
+         //       }
+         //   }
+       // }
        // stage('Deploy with Argo CD') {
            // steps {
                // script {
