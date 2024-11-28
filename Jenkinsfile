@@ -55,7 +55,8 @@ pipeline {
             def kubeContext = "${KUBE_CONTEXT}"
             echo "Switching to Kubernetes context: ${kubeContext}"
             // bat "kubectl config get-contexts"
-               bat "kubectl config use-context docker-desktop"
+             bat "kubectl config use-context ${KUBE_CONTEXT}"
+             //  bat "kubectl config use-context docker-desktop"
                 //bat "kubectl apply -f deployment.yaml"
             //bat "kubectl config use-context ${kubeContext}"
         }
@@ -67,7 +68,8 @@ pipeline {
                     // Use kubectl command to sync with Argo CD
                     echo "Current KUBE_CONTEXT: ${KUBE_CONTEXT}"
                      bat "kubectl config get-contexts"
-               bat "kubectl config use-context docker-desktop"
+              bat "kubectl config use-context ${KUBE_CONTEXT}"
+               //bat "kubectl config use-context docker-desktop"
                 bat "kubectl apply -f deployment.yaml"
                    // bat "kubectl config use-context ${KUBE_CONTEXT}"
                        bat "argocd app sync my-python-app"
