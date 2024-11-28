@@ -4,8 +4,10 @@ pipeline {
         DOCKER_IMAGE = "abinayapalraj12/my-python-app:${env.BUILD_NUMBER}"
         GITHUB_REPO = "Abinaya-120195/my-python-app"
         DOCKER_CREDENTIALS = credentials('dockerhub-credentials') // Jenkins Docker Hub credentials
+        KUBECONFIG = "C:\Users\abina\.kube\config"
         ARGOCD_SERVER = "https://localhost:8081"
         KUBE_CONTEXT = "docker-desktop" // Set your Kubernetes context
+        
     }
     stages {
         stage('Checkout') {
@@ -52,7 +54,10 @@ pipeline {
             // Switch to the specified Kubernetes context
             def kubeContext = "${KUBE_CONTEXT}"
             echo "Switching to Kubernetes context: ${kubeContext}"
-            bat "kubectl config use-context ${kubeContext}"
+            // bat "kubectl config get-contexts"
+               bat "kubectl config use-context docker-desktop"
+                //bat "kubectl apply -f deployment.yaml"
+            //bat "kubectl config use-context ${kubeContext}"
         }
     }
 }
@@ -61,7 +66,10 @@ pipeline {
                 script {
                     // Use kubectl command to sync with Argo CD
                     echo "Current KUBE_CONTEXT: ${KUBE_CONTEXT}"
-                    bat "kubectl config use-context ${KUBE_CONTEXT}"
+                     bat "kubectl config get-contexts"
+               bat "kubectl config use-context docker-desktop"
+                bat "kubectl apply -f deployment.yaml"
+                   // bat "kubectl config use-context ${KUBE_CONTEXT}"
                        bat "argocd app sync my-python-app"
                    
                 }
