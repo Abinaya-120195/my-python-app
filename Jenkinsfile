@@ -3,7 +3,7 @@ pipeline {
     environment {
         DOCKER_IMAGE = "abinayapalraj12/my-python-app:${env.BUILD_NUMBER}"
         GITHUB_REPO = "Abinaya-120195/my-python-app"
-        DOCKER_CREDENTIALS = credentials('dockerhub-token') // Jenkins Docker Hub credentials
+            DOCKER_CREDENTIALS = credentials('dockerhub-token') // Jenkins Docker Hub credentials
         ARGOCD_SERVER = "https://localhost:8081"
         KUBE_CONTEXT = "docker-desktop" // Set your Kubernetes context
     }
@@ -14,16 +14,13 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Test Credentials') {
+        stage('Test Docker Hub Token') {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'dockerhub-token', 
-                                                     usernameVariable: 'DOCKER_USER', 
-                                                     passwordVariable: 'DOCKER_PASS')]) {
-                        sh '''
-                        echo "Username: $DOCKER_USER"
-                        '''
-                    }
+                    sh '''
+                    echo "Testing Docker Hub Token..."
+                    echo $DOCKER_CREDE
+                    '''
                 }
             }
         }
