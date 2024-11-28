@@ -71,7 +71,8 @@ pipeline {
                      bat "kubectl config get-contexts"
               bat "kubectl config use-context ${KUBE_CONTEXT}"
                //bat "kubectl config use-context docker-desktop"
-           kubectl apply -f k8s/service.yaml
+                    bat "kubectl apply -f deployment.yaml"
+           bat "kubectl apply -f service.yaml"
                    // bat "kubectl config use-context ${KUBE_CONTEXT}"
                       // bat "argocd app sync my-python-app"
                    
