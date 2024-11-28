@@ -51,7 +51,7 @@ pipeline {
     post {
         always {
             // Archive logs if needed
-            archiveArtifacts artifacts: '**/*.log', allowEmptyArchive: true
+           // archiveArtifacts artifacts: '**/*.log', allowEmptyArchive: true
         }
         success {
             echo 'Deployment successful!'
