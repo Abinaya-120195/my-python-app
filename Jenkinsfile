@@ -56,7 +56,7 @@ pipeline {
             echo "Switching to Kubernetes context: ${kubeContext}"
             // bat "kubectl config get-contexts"
              bat "kubectl config use-context ${KUBE_CONTEXT}"
-              bat kubectl get nodes
+              bat "kubectl get nodes"
              //  bat "kubectl config use-context docker-desktop"
                 //bat "kubectl apply -f deployment.yaml"
             //bat "kubectl config use-context ${kubeContext}"
