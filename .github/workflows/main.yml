@@ -43,4 +43,5 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ap-south-1
         run: |
-          aws s3 cp artifacts s3://myabipythonbucket/artifacts/ --recursive
+          aws s3 cp artifacts s3://myabipythonbucket/artifacts/ --recursive --debug
+
