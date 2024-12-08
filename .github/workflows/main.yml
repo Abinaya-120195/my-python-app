@@ -36,6 +36,18 @@ jobs:
           mkdir -p artifacts
           echo "Build artifact created" > artifacts/build.txt
 
+      #Debug arifacts
+      - name: Debug artifacts directory
+        run: |
+          ls -R
+          if [ -d "artifacts" ]; then
+          echo "Artifacts directory exists"
+          ls artifacts
+          else
+          echo "Artifacts directory does not exist"
+          exit 1
+           fi
+
       # Upload Artifacts to S3
       - name: Upload artifact to S3
         env:
