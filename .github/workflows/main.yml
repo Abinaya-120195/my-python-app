@@ -46,7 +46,6 @@ jobs:
           echo "Artifacts directory does not exist"
           mkdir -p artifacts
           echo "Build artifact created" > artifacts/build.txt
-          aws s3 cp artifacts s3://myabipythonbucket/artifacts/ --recursive 
           fi
       # Upload Artifacts to S3
       - name: Upload artifact to S3
@@ -55,5 +54,8 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ap-south-1
         run: |
+          aws configure set aws_access_key_id "${{ secrets.AWS_ACCESS_KEY_ID }}"
+          aws configure set aws_secret_access_key "${{ secrets.AWS_SECRET_ACCESS_KEY }}"
+          aws configure set default.region "ap-south-1"
           aws s3 cp artifacts s3://myabipythonbucket/artifacts/ --recursive 
 
