@@ -32,6 +32,10 @@ jobs:
 
       #Debug arifacts
       - name: Debug artifacts directory
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ap-south-1
         run: |
           ls -R
           if [ -d "artifacts" ]; then
@@ -42,8 +46,7 @@ jobs:
           echo "Artifacts directory does not exist"
           mkdir -p artifacts
           echo "Build artifact created" > artifacts/build.txt
-          cd artifacts
-          ls
+          aws s3 cp artifacts s3://myabipythonbucket/artifacts/ --recursive 
           fi
       # Upload Artifacts to S3
       - name: Upload artifact to S3
