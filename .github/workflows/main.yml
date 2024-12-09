@@ -40,14 +40,9 @@ jobs:
           rm -rf artifact
           else
           echo "Artifacts directory does not exist"
-          exit 1
-           fi
-      # Create Artifacts
-      - name: Create artifact
-        run: |
           mkdir -p artifacts
           echo "Build artifact created" > artifacts/build.txt
-          
+          fi
       # Upload Artifacts to S3
       - name: Upload artifact to S3
         env:
