@@ -30,13 +30,6 @@ jobs:
       - name: Run tests
         run: pytest test_app.py
 
-      # Create Artifacts
-      - name: Create artifact
-        run: |
-          rm -rf artifact
-          mkdir -p artifacts
-          echo "Build artifact created" > artifacts/build.txt
-
       #Debug arifacts
       - name: Debug artifacts directory
         run: |
@@ -44,11 +37,17 @@ jobs:
           if [ -d "artifacts" ]; then
           echo "Artifacts directory exists"
           ls artifacts
+          rm -rf artifact
           else
           echo "Artifacts directory does not exist"
           exit 1
            fi
-
+      # Create Artifacts
+      - name: Create artifact
+        run: |
+          mkdir -p artifacts
+          echo "Build artifact created" > artifacts/build.txt
+          
       # Upload Artifacts to S3
       - name: Upload artifact to S3
         env:
