@@ -33,6 +33,7 @@ jobs:
       # Create Artifacts
       - name: Create artifact
         run: |
+          rm -rf artifact
           mkdir -p artifacts
           echo "Build artifact created" > artifacts/build.txt
 
