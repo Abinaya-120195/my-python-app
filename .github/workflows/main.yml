@@ -42,6 +42,7 @@ jobs:
           echo "Artifacts directory does not exist"
           mkdir -p artifacts
           echo "Build artifact created" > artifacts/build.txt
+          ls
           fi
       # Upload Artifacts to S3
       - name: Upload artifact to S3
